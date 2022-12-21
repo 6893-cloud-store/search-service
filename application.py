@@ -47,7 +47,7 @@ def es(msg):
     list = []
     for r in results:
         list.append(r['_source']['column1'])
-    return list
+    return {'code': '001', 'body': list}
 
 if __name__ == '__main__':
     application.run(port=8000, host='0.0.0.0')
