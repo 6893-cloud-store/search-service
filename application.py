@@ -18,7 +18,8 @@ client = Elasticsearch(
 def search():
     keyword = request.get_json().get('key')
     list = es(keyword)
-    return {'code':'001', 'body':list}
+    dict = {'code':'001', 'body':list}
+    return jsonify(dict)
 
 
 def es(msg):
@@ -47,7 +48,7 @@ def es(msg):
     list = []
     for r in results:
         list.append(r['_source']['column1'])
-    return {'code': '001', 'body': list}
+    return list
 
 if __name__ == '__main__':
     application.run(port=8000, host='0.0.0.0')
